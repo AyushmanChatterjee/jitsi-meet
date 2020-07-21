@@ -24,7 +24,7 @@ var config = {
         // focus: 'focus.jitsi-meet.example.com',
 
         // XMPP MUC domain. FIXME: use XEP-0030 to discover it.
-        muc: 'conference.manual-install.clanmeeting.com'
+        muc: 'conference.manual-install.clanmeeting.com',
     },
 
     // BOSH URL. FIXME: use XEP-0156 to discover it.
@@ -50,7 +50,7 @@ var config = {
 
         // P2P test mode disables automatic switching to P2P when there are 2
         // participants in the conference.
-        p2pTestMode: false
+        p2pTestMode: false,
 
         // Enables the test specific features consumed by jitsi-meet-torture
         // testMode: false
@@ -64,7 +64,7 @@ var config = {
         // on while screensharing is in progress, the max bitrate is automatically
         // adjusted to 2.5 Mbps. This takes a value between 0 and 1 which determines
         // the probability for this to be enabled.
-        // capScreenshareBitrate: 1 // 0 to disable
+        capScreenshareBitrate: 0 // 0 to disable
     },
 
     // Disables ICE/UDP by filtering out local and remote UDP candidates in
@@ -82,7 +82,7 @@ var config = {
     // Audio
 
     // Disable measuring of audio levels.
-    // disableAudioLevels: false,
+    disableAudioLevels: true,
     // audioLevelsInterval: 200,
 
     // Enabling this will run the lib-jitsi-meet no audio detection module which
@@ -94,7 +94,7 @@ var config = {
     // notify the user if there is noise, other than voice, coming from the current
     // selected microphone. The purpose it to let the user know that the input could
     // be potentially unpleasant for other meeting participants.
-    enableNoisyMicDetection: true,
+    enableNoisyMicDetection: false,
 
     // Start the conference in audio only mode (no video is being received nor
     // sent).
@@ -105,7 +105,7 @@ var config = {
 
     // Start calls with audio muted. Unlike the option above, this one is only
     // applied locally. FIXME: having these 2 options is confusing.
-    // startWithAudioMuted: false,
+    startWithAudioMuted: true,
 
     // Enabling it (with #params) will disable local audio output of remote
     // participants and to enable it back a reload is needed.
@@ -119,22 +119,22 @@ var config = {
     // Video
 
     // Sets the preferred resolution (height) for local video. Defaults to 720.
-    // resolution: 720,
+    resolution: 720,
 
     // w3c spec-compliant video constraints to use for video capture. Currently
     // used by browsers that return true from lib-jitsi-meet's
     // util#browser#usesNewGumFlow. The constraints are independent from
     // this config's resolution value. Defaults to requesting an ideal
     // resolution of 720p.
-    // constraints: {
-    //     video: {
-    //         height: {
-    //             ideal: 720,
-    //             max: 720,
-    //             min: 240
-    //         }
-    //     }
-    // },
+    constraints: {
+        video: {
+            height: {
+                ideal: 720,
+                max: 720,
+                min: 240
+            }
+        }
+    },
 
     // Enable / disable simulcast support.
     // disableSimulcast: false,
@@ -149,7 +149,7 @@ var config = {
 
     // Start calls with video muted. Unlike the option above, this one is only
     // applied locally. FIXME: having these 2 options is confusing.
-    // startWithVideoMuted: false,
+    startWithVideoMuted: true,
 
     // If set to true, prefer to use the H.264 video codec (if supported).
     // Note that it's not recommended to do this because simulcast is not
@@ -166,7 +166,7 @@ var config = {
     // Optional desktop sharing frame rate options. Default value: min:5, max:5.
     // desktopSharingFrameRate: {
     //     min: 5,
-    //     max: 5
+    //     max: 30
     // },
 
     // Try to start calls with screen-sharing instead of camera video.
@@ -175,7 +175,7 @@ var config = {
     // Recording
 
     // Whether to enable file recording or not.
-    // fileRecordingsEnabled: false,
+    fileRecordingsEnabled: true,
     // Enable the dropbox integration.
     // dropbox: {
     //     appKey: '<APP_KEY>' // Specify your app key here.
@@ -185,22 +185,27 @@ var config = {
     //     redirectURI:
     //          'https://jitsi-meet.example.com/subfolder/static/oauth.html'
     // },
+    dropbox: {
+        appKey: '92q17yr28hmo015', // Specify your app key here.
+        redirectURI:
+          'https://try.clanmeeting.com/static/oauth.html'
+    },
     // When integrations like dropbox are enabled only that will be shown,
     // by enabling fileRecordingsServiceEnabled, we show both the integrations
     // and the generic recording service (its configuration and storage type
     // depends on jibri configuration)
-    // fileRecordingsServiceEnabled: false,
+    fileRecordingsServiceEnabled: false,
     // Whether to show the possibility to share file recording with other people
     // (e.g. meeting participants), based on the actual implementation
     // on the backend.
-    // fileRecordingsServiceSharingEnabled: false,
+    fileRecordingsServiceSharingEnabled: false,
 
     // Whether to enable live streaming or not.
-    // liveStreamingEnabled: false,
+    liveStreamingEnabled: false,
 
     // Transcription (in interface_config,
     // subtitles and buttons can be configured)
-    // transcribingEnabled: false,
+    // transcribingEnabled: true,
 
     // Enables automatic turning on captions when recording is started
     // autoCaptionOnRecord: false,
@@ -216,7 +221,7 @@ var config = {
     //    // The recording limit in minutes. Note: This number appears in the notification text
     //    // but doesn't enforce the actual recording time limit. This should be configured in
     //    // jibri!
-    //    limit: 60,
+    //   limit: 120,
     //
     //    // The name of the app with unlimited recordings.
     //    appName: 'Unlimited recordings APP',
@@ -273,7 +278,7 @@ var config = {
     //
 
     // Require users to always specify a display name.
-    // requireDisplayName: true,
+    requireDisplayName: true,
 
     // Whether to use a welcome page or not. In case it's false a random room
     // will be joined when no room is specified.
@@ -310,15 +315,15 @@ var config = {
 
     // Enables calendar integration, depends on googleApiApplicationClientID
     // and microsoftApiApplicationClientID
-    // enableCalendarIntegration: false,
+    // enableCalendarIntegration: true,
 
     // When 'true', it shows an intermediate page before joining, where the user can configure their devices.
-    // prejoinPageEnabled: false,
+    prejoinPageEnabled: true,
 
     // If true, shows the unsafe room name warning label when a room name is
     // deemed unsafe (due to the simplicity in the name) and a password is not
     // set or the lobby is not enabled.
-    // enableInsecureRoomNameWarning: false,
+    enableInsecureRoomNameWarning: true,
 
     // Stats
     //
@@ -498,7 +503,7 @@ var config = {
     // disableInviteFunctions: true,
 
     // Disables storing the room name to the recents list
-    // doNotStoreRoom: true,
+    doNotStoreRoom: true,
 
     // Deployment specific URLs.
     // deploymentUrls: {
@@ -511,13 +516,13 @@ var config = {
     // },
 
     // Options related to the remote participant menu.
-    // remoteVideoMenu: {
+    remoteVideoMenu: {
     //     // If set to true the 'Kick out' button will be disabled.
-    //     disableKick: true
-    // },
+       disableKick: false
+    },
 
     // If set to true all muting operations of remote participants will be disabled.
-    // disableRemoteMute: true,
+    disableRemoteMute: false,
 
     /**
      External API url used to receive branding specific information.
