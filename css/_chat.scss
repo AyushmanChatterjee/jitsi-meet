@@ -37,7 +37,7 @@
     }
 
     a:link {
-        color: rgb(184, 184, 184);
+        color: white;
     }
 
     a:visited {
@@ -45,7 +45,7 @@
     }
 
     a:hover {
-        color: rgb(213, 213, 213);
+        color: white;
     }
 
     a:active {
@@ -103,6 +103,7 @@
     position: relative;
     width: 100%;
     z-index: 1;
+    border-bottom: 2px solid $chatInputSeparatorColor;
 
     .chat-close {
         align-items: center;
@@ -126,7 +127,7 @@
 }
 
 #chat-input {
-    border-top: 1px solid $chatInputSeparatorColor;
+    border-top: 2px solid $chatInputSeparatorColor;
     display: flex;
     padding: 5px 10px;
 
@@ -177,7 +178,7 @@
     }
 
     .display-name {
-        font-size: 13px;
+        font-size: 12px;
         font-weight: bold;
         margin-bottom: 5px;
         white-space: nowrap;
@@ -188,16 +189,16 @@
 
 .chatmessage {
     background-color: $chatRemoteMessageBackgroundColor;
-    border-radius: 0px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
     box-sizing: border-box;
     color: white;
-    margin-top: 3px;
+    margin-top: 4px;
     max-width: 100%;
     position: relative;
 
     &.localuser {
         background-color: $chatLocalMessageBackgroundColor;
-        border-radius: 6px 0px 6px 6px;
+        border-radius: 6px 6px 6px 6px;
     }
 
     .usermessage {
@@ -231,17 +232,17 @@
 }
 
 .smiley {
-    font-size: 14pt;
+    font-size: 12pt;
 }
 
 #smileys {
-    font-size: 20pt;
+    font-size: 16pt;
     margin: auto;
     cursor: pointer;
 }
 
 #smileys img {
-    width: 22px;
+    width: 16px;
     padding: 2px;
 }
 
@@ -265,7 +266,7 @@
     max-height: 0;
     overflow: hidden;
     position: absolute;
-    width: $sidebarWidth;
+    width: $sidebarWidth - 20px;
 
     /**
      * CSS transitions do not apply for auto dimensions. So to produce the css
@@ -280,14 +281,14 @@
     }
 
     #smileysContainer {
-        background-color: $newToolbarBackgroundColor;
-        border-bottom: 1px solid;
-        border-top: 1px solid;
+        background-color: #6E90B5;
+        border: 1px solid;
+        padding: 5px;
     }
 }
 
 #smileysContainer .smiley {
-    font-size: 20pt;
+    font-size: 16pt;
 }
 
 .smileyContainer {
@@ -316,7 +317,7 @@
 
         .chatmessage {
             background-color: $chatLocalMessageBackgroundColor;
-            border-radius: 6px 0px 6px 6px;
+            border-radius: 6px 6px 6px 6px;
 
             &.privatemessage {
                 background-color: $chatPrivateMessageBackgroundColor;
@@ -369,9 +370,9 @@
 
     .chatmessage {
         background-color: $chatRemoteMessageBackgroundColor;
-        border-radius: 0px 6px 6px 6px;
+        border-radius: 6px 6px 6px 6px;
         display: inline-block;
-        margin-top: 3px;
+        margin-top: 4px;
         color: white;
 
         &.privatemessage {
