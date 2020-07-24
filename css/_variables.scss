@@ -1,9 +1,25 @@
 @import "themes/light";
 
 /**
+ * Custom Font
+ */
+@font-face {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Mulish-Regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Mulish-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Mulish-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/Mulish-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/Mulish-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Mulish-Regular.svg#Mulish') format('svg'); /* Legacy iOS */
+}
+
+/**
  * Style variables
  */
-$baseFontFamily: -apple-system, BlinkMacSystemFont, 'Mulish', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+/** $baseFontFamily: -apple-system, BlinkMacSystemFont, 'Mulish', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+$baseFontFamily: 'Mulish','open_sanslight',sans-serif;
 $hangupColor: #bd443b;
 $hangupFontSize: 2em;
 
