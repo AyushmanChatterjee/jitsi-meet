@@ -82,28 +82,25 @@
             .toolbox-button {
 
                 .toolbox-icon {
-                    background-color: #B79277;
-                    /* border-radius: 50%; */
+                    background-image: linear-gradient(45deg, black, #008080 100px);
                     border: 1px solid #979A9A;
                     margin: 0px 4px;
                     width: 38px;
                     height: 38px;
         
                     &:hover {
-                        background-color: #B79277;
-                        border: 1px solid #979A9A;
+                       background-image: linear-gradient(45deg, black, #008080 100px);
                     }
-        
+
                     &.toggled {
                         background: none;
-                        border: 1px solid #979A9A;
-    
+ 
                         svg {
                             fill: #fff;
                         }
         
                         &:hover {
-                            background-color: #a4826a;
+                            background-image: linear-gradient(45deg, black, #008080 100px);
                         }
                     }
         

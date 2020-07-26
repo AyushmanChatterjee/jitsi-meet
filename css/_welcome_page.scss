@@ -43,6 +43,7 @@ body.welcome-page {
             line-height: $welcomePageHeaderTextTitleLineHeight;
             margin-bottom: $welcomePageHeaderTextTitleMarginBottom;
             opacity: $welcomePageHeaderTextTitleOpacity;
+            display: none;
         }
 
         .header-text-description {
@@ -61,7 +62,7 @@ body.welcome-page {
             max-width: calc(100% - 40px);
             width: $welcomePageEnterRoomWidth;
             z-index: $zindex2;
-            background-color: #fff;
+            background-color: #E6E6FA;
             padding: $welcomePageEnterRoomPadding;
             border-radius: $welcomePageEnterRoomBorderRadius;
 
@@ -70,30 +71,32 @@ body.welcome-page {
                 padding: $welcomePageEnterRoomInputContainerPadding;
                 text-align: left;
                 color: #253858;
-                height: fit-content;
+                height: 130px;
 
                 .enter-room-title {
                     display: $welcomePageEnterRoomTitleDisplay;
                     font-size: 18px;
                     font-weight: bold;
-                    padding-bottom: 5px;
+                    padding-bottom: 20px;
                 }
 
                 .enter-room-input {
                     border-width: $welcomePageEnterRoomInputContainerBorderWidth;
                     border-style: $welcomePageEnterRoomInputContainerBorderStyle;
                     border-image: $welcomePageEnterRoomInputContainerBorderImage;
+                    padding: $welcomePageEnterRoomInputContainerPadding;
                     display: inline-block;
                     width: 100%;
                     font-size: 14px;
+                    background-color: #E6E6FA;
                 }
 
                 .insecure-room-name-warning {
                     align-items: center;
-                    color: $defaultWarningColor;
+                    color: #483d8b;
                     display: flex;
                     flex-direction: row;
-                    margin-top: 5px;
+                    margin-top: 10px;
 
                     .jitsi-icon {
                         margin-right: 15px;
@@ -185,7 +188,7 @@ body.welcome-page {
         height: $welcomePageButtonHeight;
         font-size: $welcomePageButtonFontSize;
         font-weight: $welcomePageButtonFontWeight;
-        background: #0074E0;
+        background: #FF5252;
         border-radius: $welcomePageButtonBorderRadius;
         color: #FFFFFF;
         text-align: center;
@@ -200,6 +203,7 @@ body.welcome-page {
         top: 32px;
         right: 32px;
         z-index: $zindex2;
+        display: none;
 
         * {
             cursor: pointer;
@@ -211,5 +215,6 @@ body.welcome-page {
         position: absolute;
         width: 100%;
         height: 100%;
+        display: none;
     }
 }

@@ -54,10 +54,10 @@ $presence-idle: #acacac;
  * Toolbar
  */
 $newToolbarBackgroundColor: #36588C;
-$newToolbarButtonHoverColor: #B79277;
-$newToolbarButtonToggleColor: #B79277;
-$AOTToolbarButtonHoverColor: #B79277;
-$AOTToolbarButtonToggleColor: #B79277; 
+$newToolbarButtonHoverColor: linear-gradient(45deg, black, #008080 100px);
+$newToolbarButtonToggleColor: linear-gradient(45deg, black, #008080 100px);
+$AOTToolbarButtonHoverColor: linear-gradient(45deg, black, #008080 100px);
+$AOTToolbarButtonToggleColor: linear-gradient(45deg, black, #008080 100px);
 $newToolbarFontSize: 24px;
 $newToolbarHangupFontSize: 32px;
 $newToolbarSize: 38px;
@@ -108,7 +108,7 @@ $modalTextColor: #333;
 $chatActionsSeparatorColor: #614e6e;
 $chatHeaderBackgroundColor: #36588C;
 $chatInputSeparatorColor: #979a9a;
-$chatLocalMessageBackgroundColor: #B79277;
+$chatLocalMessageBackgroundColor: #4682b4;
 $chatPrivateMessageBackgroundColor: #29936d;
 $chatRemoteMessageBackgroundColor:  #614e6e;
 $sidebarWidth: 320px;
@@ -177,15 +177,15 @@ $unsupportedDesktopBrowserTextFontSize: 21px;
 /**
  * The size of the default watermark.
  */
-$watermarkWidth: 186px;
-$watermarkHeight: 74px;
+$watermarkWidth: 55px;
+$watermarkHeight: 40px;
 
 /**
  * Welcome page variables.
  */
 $welcomePageDescriptionColor: #fff;
 $welcomePageFontFamily: inherit;
-$welcomePageBackground: linear-gradient(-90deg, #1251AE 0%, #0074FF 50%, #1251AE 100%);
+$welcomePageBackground: linear-gradient(180deg,#2E496A 0,#365889 100%);
 $welcomePageTitleColor: #fff;
 
 $welcomePageHeaderBackground: none;
@@ -195,8 +195,8 @@ $welcomePageHeaderBackgroundRepeat: none;
 $welcomePageHeaderBackgroundSize: none;
 $welcomePageHeaderPaddingBottom: 0px;
 
-$welcomePageHeaderTextMarginTop: 35px;
-$welcomePageHeaderTextMarginBottom: 35px;
+$welcomePageHeaderTextMarginTop: 40px;
+$welcomePageHeaderTextMarginBottom: 40px;
 
 $welcomePageHeaderTextTitleMarginBottom: 16px;
 $welcomePageHeaderTextTitleFontSize: 2.5rem;
@@ -211,14 +211,16 @@ $welcomePageHeaderTextDescriptionLineHeight: 24px;
 $welcomePageHeaderTextDescriptionMarginBottom: 20px;
 $welcomePageHeaderTextDescriptionAlignSelf: inherit;
 
+/* Outside Container below the description */
 $welcomePageEnterRoomWidth: 680px;
 $welcomePageEnterRoomPadding: 25px 30px;
 $welcomePageEnterRoomBorderRadius: 0px;
 
-$welcomePageEnterRoomInputContainerPadding: 0 8px 5px 0px;
-$welcomePageEnterRoomInputContainerBorderWidth: 0px 0px 2px 0px;
+/* Room input field */
+$welcomePageEnterRoomInputContainerPadding: 10px;
+$welcomePageEnterRoomInputContainerBorderWidth: 1px 1px 2px 2px;
 $welcomePageEnterRoomInputContainerBorderStyle: solid;
-$welcomePageEnterRoomInputContainerBorderImage: linear-gradient(to right, #dee1e6, #fff) 1;
+$welcomePageEnterRoomInputContainerBorderImage: linear-gradient(to right, #6E91EF, #E6E6FA) 1;
 
 $welcomePageEnterRoomTitleDisplay: inherit;
 
