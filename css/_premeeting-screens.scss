@@ -32,8 +32,8 @@
         width: 286px;
 
         &.primary {
-            background: #0376DA;
-            border: 1px solid #0376DA;
+            background: $primaryButtonBackground;
+            border: 1px solid $primaryButtonBackground;
         }
 
         &.secondary {
@@ -79,7 +79,7 @@
     }
 
     .preview-overlay {
-        background-image: linear-gradient(transparent, black);
+        background-image: linear-gradient(transparent, #2E496A);
         z-index: $toolbarZ + 1;
     }
 
@@ -120,7 +120,7 @@
                 }
 
                 &.done {
-                    background: #31B76A;
+                    background: #48644b;
                 }
 
                 .jitsi-icon {
@@ -219,7 +219,7 @@
 
 @mixin flex-centered() {
     align-items: center;
-    display: flex;
+    display: none;
     justify-content: center;
 }
 
@@ -249,7 +249,7 @@
     }
 
     &:hover {
-        background: #1C2025;
+        background: $primaryButtonHoverBackground;
 
         @include icon-container(#A4B8D1, #1C2025);
     }
