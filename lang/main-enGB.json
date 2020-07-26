@@ -116,7 +116,7 @@
         "yesterday": "Yesterday"
     },
     "deepLinking": {
-        "appNotInstalled": "You need the {{app}} mobile app to join this meeting on your phone.",
+        "appNotInstalled": "You need the {{app}} mobile app to join this meeting on your phone. We strongly recommend using our app to avoid quality and stability issues on mobile browsers.",
         "description": "Nothing happened? We tried launching your meeting in the {{app}} desktop app. Try again or launch it in the {{app}} web app.",
         "descriptionWithoutWeb": "",
         "downloadApp": "Download the app",
