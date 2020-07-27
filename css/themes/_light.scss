@@ -14,8 +14,8 @@ $sliderThumbBackground: #3572b0;
 /**
 * Buttons
 */
-$buttonBackground: #44A5FF;
-$buttonHoverBackground: #2c4062;
+$buttonBackground: #FF5262;
+$buttonHoverBackground: #DB7080;
 $buttonBorder: transparent;
 $buttonHoverBorder: transparent;
 $buttonColor: #eceef1;
@@ -26,10 +26,10 @@ $buttonLightBorder: #ccc;
 $buttonLightHoverBorder: #999;
 
 $buttonLinkBackground: transparent;
-$buttonLinkColor: #0090e8;
+$buttonLinkColor: #DB7080;
 
-$primaryButtonBackground: #3572b0;
-$primaryButtonHoverBackground: #2a67a5;
+$primaryButtonBackground: #FF5262;
+$primaryButtonHoverBackground: #DB7080;
 $primaryButtonColor: $baseLight;
 $primaryButtonFontWeight: 400;
 
@@ -71,8 +71,8 @@ $defaultDarkSelectionColor: #ccc;
 $buttonFontWeight: 400;
 $labelFontWeight: 400;
 $hintFontSize: em(13, 14);
-$linkFontColor: #3572b0;
-$linkHoverFontColor: darken(#3572b0, 10%);
+$linkFontColor: #DB7080;
+$linkHoverFontColor: darken(#DB7080, 10%);
 $dropdownColor: #333;
 $errorColor: #c61600;
 
@@ -92,7 +92,7 @@ $secondaryToolbarBg: rgba(0, 0, 0, 0.5);
 // TOFIX: Once moved to react rename to match the side panel class name.
 $sideToolbarContainerBg: rgba(0, 0, 0, 0.75);
 $toolbarBackground: rgba(0, 0, 0, 0.5);
-$toolbarBadgeBackground: #165ECC;
+$toolbarBadgeBackground: #ff5252;
 $toolbarBadgeColor: #FFFFFF;
 $toolbarButtonColor: #FFFFFF;
 $toolbarSelectBackground: rgba(0, 0, 0, .6);
