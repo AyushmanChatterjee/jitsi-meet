@@ -201,7 +201,7 @@ var config = {
     fileRecordingsServiceSharingEnabled: false,
 
     // Whether to enable live streaming or not.
-    liveStreamingEnabled: false,
+    liveStreamingEnabled: true,
 
     // Transcription (in interface_config,
     // subtitles and buttons can be configured)
@@ -286,7 +286,7 @@ var config = {
 
     // Enabling the close page will ignore the welcome page redirection when
     // a call is hangup.
-    // enableClosePage: false,
+    enableClosePage: true,
 
     // Disable hiding of remote thumbnails when in a 1-on-1 conference call.
     // disable1On1Mode: false,
@@ -441,13 +441,13 @@ var config = {
     // Information for the chrome extension banner
     chromeExtensionBanner: {
         // The chrome extension to be installed address
-        url: 'https://chrome.google.com/webstore/detail/jitsi-meetings/kglhbbefdnlheedjiejgomgmfplipfeb',
+        url: 'https://chrome.google.com/webstore/detail/clanmeeting/knbgickjfjhmhdmdilpcjaipidpnbbfn',
 
         // Extensions info which allows checking if they are installed or not
         chromeExtensionsInfo: [
             {
-                id: 'kglhbbefdnlheedjiejgomgmfplipfeb',
-                path: 'jitsi-logo-48x48.png'
+                id: 'knbgickjfjhmhdmdilpcjaipidpnbbfn',
+                path: 'images/jitsiLogo_square.png'
             }
         ]
     },

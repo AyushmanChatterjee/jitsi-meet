@@ -1,14 +1,19 @@
-<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3.87597 3.00772L3 3.11722V4V13.6745C3 16.088 4.24334 18.3313 6.29001 19.6105L11.47 22.848L12 23.1792L12.53 22.848L17.71 19.6105C19.7567 18.3313 21 16.088 21 13.6745V4V3.11722L20.124 3.00772L12.124 2.00772L12 1.99222L11.876 2.00772L3.87597 3.00772Z" fill="url(#paint0_linear)" stroke="white" stroke-width="2"/>
-<path d="M20 4V13.6745C20 15.7433 18.9343 17.6661 17.18 18.7625L12 22V3L20 4Z" fill="url(#paint1_linear)"/>
-<defs>
-<linearGradient id="paint0_linear" x1="11.8143" y1="4.14215" x2="11.8143" y2="23" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FFB800"/>
-<stop offset="1" stop-color="#CF4B00"/>
-</linearGradient>
-<linearGradient id="paint1_linear" x1="11.8143" y1="4.14215" x2="11.8143" y2="23" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FF8A00"/>
-<stop offset="1" stop-color="#A03B03"/>
-</linearGradient>
-</defs>
+<svg width="24" height="24" version="1.1" viewBox="0 0 512.01 512.01" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="SVGID_1_" x1="91.033" x2="350.06" y1="276.87" y2="276.87" gradientTransform="matrix(1.1608 0 0 .86151 .01182 0)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#FF7BAC" offset="0"/>
+   <stop stop-color="#0ff" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient2817" x1="135.15" x2="376.87" y1="137.31" y2="137.31" gradientUnits="userSpaceOnUse" xlink:href="#SVGID_1_"/>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect id="canvas_background" x="-1" y="-1" width="582" height="402" fill="none"/>
+ </g>
+ <g transform="matrix(1.2342 0 0 1.2371 -59.958 -60.697)">
+  <title>Layer 1</title>
+  <path d="m372 461.68h-231.99c-18.966 0-34.34-15.375-34.34-34.34v-154.47c0-18.966 15.374-34.34 34.34-34.34h231.99c18.965 0 34.339 15.375 34.339 34.34v154.47c0 18.965-15.374 34.34-34.339 34.34z" fill="url(#SVGID_1_)" style="fill:url(#SVGID_1_)"/>
+  <path d="m376.87 224.3h-40v-53.116c0-44.587-36.274-80.861-80.86-80.861-44.587 0-80.861 36.274-80.861 80.861l-40 5.4363v-5.4363c0-66.643 54.218-120.86 120.86-120.86s120.86 54.218 120.86 120.86z" fill="#3f5eab" style="fill:url(#linearGradient2817)"/>
+  <path d="m291.01 327.84c0-19.33-15.67-35-35-35s-35 15.67-35 35c0 10.8 4.895 20.453 12.582 26.873l-11.732 41.986h68.01l-11.677-41.788c7.824-6.419 12.817-16.161 12.817-27.071z" fill="#3f5eab"/>
+ </g>
 </svg>
