@@ -49,7 +49,7 @@ var interfaceConfig = {
     DEFAULT_LOGO_URL: 'images/watermark.png',
     DEFAULT_REMOTE_DISPLAY_NAME: 'Participant',
 
-    DISABLE_DOMINANT_SPEAKER_INDICATOR: true,
+    DISABLE_DOMINANT_SPEAKER_INDICATOR: false,
 
     DISABLE_FOCUS_INDICATOR: false,
 
@@ -236,7 +236,7 @@ var interfaceConfig = {
     /**
      * Specify URL for downloading ios mobile app.
      */
-    // MOBILE_DOWNLOAD_LINK_IOS: 'https://itunes.apple.com/us/app/jitsi-meet/id1165103905',
+    MOBILE_DOWNLOAD_LINK_IOS: 'https://play.google.com/store/apps/details?id=com.clanmeeting.android',
 
     /**
      * Specify Firebase dynamic link properties for the mobile apps.
@@ -252,7 +252,7 @@ var interfaceConfig = {
     /**
      * Specify mobile app scheme for opening the app from the mobile browser.
      */
-    // APP_SCHEME: 'org.jitsi.meet',
+    APP_SCHEME: 'com.clanmeeting.android',
 
     /**
      * Specify the Android app package name.
