@@ -9,9 +9,11 @@ import {
     sendAnalytics
 } from '../../../analytics';
 import { openDialog, toggleDialog } from '../../../base/dialog';
+import { isMobileBrowser } from '../../../base/environment/utils';
 import { translate } from '../../../base/i18n';
 import {
     IconChat,
+    IconCodeBlock,
     IconExitFullScreen,
     IconFeedback,
     IconFullScreen,
@@ -23,16 +25,19 @@ import {
     IconShareDesktop,
     IconShareVideo
 } from '../../../base/icons';
+import JitsiMeetJS from '../../../base/lib-jitsi-meet';
 import {
     getLocalParticipant,
     getParticipants,
     participantUpdated
 } from '../../../base/participants';
 import { connect, equals } from '../../../base/redux';
-import { OverflowMenuItem } from '../../../base/toolbox';
+import { OverflowMenuItem } from '../../../base/toolbox/components';
 import { getLocalVideoTrack, toggleScreensharing } from '../../../base/tracks';
+import { isVpaasMeeting } from '../../../billing-counter/functions';
 import { VideoBlurButton } from '../../../blur';
 import { CHAT_SIZE, ChatCounter, toggleChat } from '../../../chat';
+import { EmbedMeetingDialog } from '../../../embed-meeting';
 import { SharedDocumentButton } from '../../../etherpad';
 import { openFeedbackDialog } from '../../../feedback';
 import { beginAddPeople } from '../../../invite';
@@ -58,6 +63,7 @@ import {
 } from '../../../subtitles';
 import {
     TileViewButton,
+    shouldDisplayTileView,
     toggleTileView
 } from '../../../video-layout';
 import {
@@ -73,9 +79,9 @@ import { isToolboxVisible } from '../../functions';
 import DownloadButton from '../DownloadButton';
 import HangupButton from '../HangupButton';
 import HelpButton from '../HelpButton';
+import MuteEveryoneButton from '../MuteEveryoneButton';
 
 import AudioSettingsButton from './AudioSettingsButton';
-import MuteEveryoneButton from './MuteEveryoneButton';
 import OverflowMenuButton from './OverflowMenuButton';
 import OverflowMenuProfileItem from './OverflowMenuProfileItem';
 import ToolbarButton from './ToolbarButton';
@@ -123,14 +129,19 @@ type Props = {
     _fullScreen: boolean,
 
     /**
+     * Whether or not the profile is disabled.
+     */
+    _isProfileDisabled: boolean,
+
+    /**
      * Whether or not the tile view is enabled.
      */
     _tileViewEnabled: boolean,
 
     /**
-     * Whether or not the current user is logged in through a JWT.
+     * Whether or not the current meeting belongs to a JaaS user.
      */
-    _isGuest: boolean,
+    _isVpaasMeeting: boolean,
 
     /**
      * The ID of the local participant.
@@ -237,6 +248,7 @@ class Toolbox extends Component<Props, State> {
         this._onToolbarOpenInvite = this._onToolbarOpenInvite.bind(this);
         this._onToolbarOpenKeyboardShortcuts = this._onToolbarOpenKeyboardShortcuts.bind(this);
         this._onToolbarOpenSpeakerStats = this._onToolbarOpenSpeakerStats.bind(this);
+        this._onToolbarOpenEmbedMeeting = this._onToolbarOpenEmbedMeeting.bind(this);
         this._onToolbarOpenVideoQuality = this._onToolbarOpenVideoQuality.bind(this);
         this._onToolbarToggleChat = this._onToolbarToggleChat.bind(this);
         this._onToolbarToggleFullScreen = this._onToolbarToggleFullScreen.bind(this);
@@ -374,6 +386,16 @@ class Toolbox extends Component<Props, State> {
         const { _conference } = this.props;
 
         this.props.dispatch(openFeedbackDialog(_conference));
+    }
+
+    /**
+     * Callback invoked to display {@code FeedbackDialog}.
+     *
+     * @private
+     * @returns {void}
+     */
+    _doOpenEmbedMeeting() {
+        this.props.dispatch(openDialog(EmbedMeetingDialog));
     }
 
     /**
@@ -717,6 +739,21 @@ class Toolbox extends Component<Props, State> {
         this._doOpenKeyboardShorcuts();
     }
 
+    _onToolbarOpenEmbedMeeting: () => void;
+
+    /**
+     * Creates an analytics toolbar event and dispatches an action for opening
+     * the embed meeting modal.
+     *
+     * @private
+     * @returns {void}
+     */
+    _onToolbarOpenEmbedMeeting() {
+        sendAnalytics(createToolbarEvent('embed.meeting'));
+
+        this._doOpenEmbedMeeting();
+    }
+
     _onToolbarOpenSpeakerStats: () => void;
 
     /**
@@ -946,8 +983,17 @@ class Toolbox extends Component<Props, State> {
      *
      * @returns {boolean}
      */
+    _isEmbedMeetingVisible() {
+        return !this.props._isVpaasMeeting && this._shouldShowButton('embedmeeting');
+    }
+
+    /**
+     * Returns true if the profile button is visible and false otherwise.
+     *
+     * @returns {boolean}
+     */
     _isProfileVisible() {
-        return this.props._isGuest && this._shouldShowButton('profile');
+        return !this.props._isProfileDisabled && this._shouldShowButton('profile');
     }
 
     /**
@@ -1017,6 +1063,13 @@ class Toolbox extends Component<Props, State> {
                     key = 'stats'
                     onClick = { this._onToolbarOpenSpeakerStats }
                     text = { t('toolbar.speakerStats') } />,
+            this._isEmbedMeetingVisible()
+                && <OverflowMenuItem
+                    accessibilityLabel = { t('toolbar.accessibilityLabel.embedMeeting') }
+                    icon = { IconCodeBlock }
+                    key = 'embed'
+                    onClick = { this._onToolbarOpenEmbedMeeting }
+                    text = { t('toolbar.embedMeeting') } />,
             this._shouldShowButton('feedback')
                 && _feedbackConfigured
                 && <OverflowMenuItem
@@ -1168,18 +1221,32 @@ class Toolbox extends Component<Props, State> {
             t
         } = this.props;
         const overflowMenuContent = this._renderOverflowMenuContent();
-        const overflowHasItems = Boolean(overflowMenuContent.filter(child => child).length);
+        const overflowHasItems = Boolean(overflowMenuContent.length);
         const toolbarAccLabel = 'toolbar.accessibilityLabel.moreActionsMenu';
         const buttonsLeft = [];
         const buttonsRight = [];
+
+        const smallThreshold = 700;
+        const verySmallThreshold = 500;
+
+        let minSpaceBetweenButtons = 48;
+        let widthPlusPaddingOfButton = 56;
+
+        if (this.state.windowWidth <= verySmallThreshold && !isMobileBrowser()) {
+            minSpaceBetweenButtons = 26;
+            widthPlusPaddingOfButton = 28;
+        } else if (this.state.windowWidth <= smallThreshold && !isMobileBrowser()) {
+            minSpaceBetweenButtons = 36;
+            widthPlusPaddingOfButton = 40;
+        }
 
         const maxNumberOfButtonsPerGroup = Math.floor(
             (
                 this.state.windowWidth
                     - 168 // the width of the central group by design
-                    - 48 // the minimum space between the button groups
+                    - minSpaceBetweenButtons // the minimum space between the button groups
             )
-            / 56 // the width + padding of a button
+            / widthPlusPaddingOfButton // the width + padding of a button
             / 2 // divide by the number of groups(left and right group)
         );
 
@@ -1335,7 +1402,7 @@ class Toolbox extends Component<Props, State> {
  */
 function _mapStateToProps(state) {
     const { conference, locked } = state['features/base/conference'];
-    let { desktopSharingEnabled } = state['features/base/conference'];
+    let desktopSharingEnabled = JitsiMeetJS.isDesktopSharingEnabled();
     const {
         callStatsID,
         enableFeaturesBasedOnToken
@@ -1357,15 +1424,7 @@ function _mapStateToProps(state) {
         desktopSharingEnabled = getParticipants(state)
             .find(({ features = {} }) =>
                 String(features['screen-sharing']) === 'true') !== undefined;
-
-        // we want to show button and tooltip
-        if (state['features/base/jwt'].isGuest) {
-            desktopSharingDisabledTooltipKey
-                = 'dialog.shareYourScreenDisabledForGuest';
-        } else {
-            desktopSharingDisabledTooltipKey
-                = 'dialog.shareYourScreenDisabled';
-        }
+        desktopSharingDisabledTooltipKey = 'dialog.shareYourScreenDisabled';
     }
 
     // NB: We compute the buttons again here because if URL parameters were used to
@@ -1379,9 +1438,10 @@ function _mapStateToProps(state) {
         _desktopSharingDisabledTooltipKey: desktopSharingDisabledTooltipKey,
         _dialog: Boolean(state['features/base/dialog'].component),
         _feedbackConfigured: Boolean(callStatsID),
-        _isGuest: state['features/base/jwt'].isGuest,
+        _isProfileDisabled: Boolean(state['features/base/config'].disableProfile),
+        _isVpaasMeeting: isVpaasMeeting(state),
         _fullScreen: fullScreen,
-        _tileViewEnabled: state['features/video-layout'].tileViewEnabled,
+        _tileViewEnabled: shouldDisplayTileView(state),
         _localParticipantID: localParticipant.id,
         _localRecState: localRecordingStates,
         _locked: locked,
