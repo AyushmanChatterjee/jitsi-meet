@@ -150,7 +150,7 @@ var interfaceConfig = {
     /**
      * Specify URL for downloading ios mobile app.
      */
-    MOBILE_DOWNLOAD_LINK_IOS: 'https://apps.apple.com/in/app/clan-meeting/id1530157500',
+    MOBILE_DOWNLOAD_LINK_IOS: 'https://apps.apple.com/in/app/clan-meeting/id1530157500#?platform=iphone',
 
     // Names of browsers which should show a warning stating the current browser
     // has a suboptimal experience. Browsers which are not listed as optimal or
@@ -205,8 +205,8 @@ var interfaceConfig = {
      */
     TOOLBAR_BUTTONS: [
         'microphone', 'camera', 'closedcaptions', 'desktop','fullscreen',
-        'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
-        'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
+        'fodeviceselection', 'hangup', 'chat', 'recording',
+        'livestreaming', 'etherpad', 'sharedvideo', 'raisehand',
         'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts',
         'tileview', 'download', 'help', 'mute-everyone', 'security', 'settings'
     ],
@@ -234,7 +234,7 @@ var interfaceConfig = {
      *
      * @type {boolean}
      */
-    VIDEO_QUALITY_LABEL_DISABLED: true,
+    VIDEO_QUALITY_LABEL_DISABLED: false,
 
     /**
      * How many columns the tile view can expand to. The respected range is
@@ -268,7 +268,7 @@ var interfaceConfig = {
      * explicitly dismissed through a user action. The value is how long, in
      * milliseconds, those notifications should remain displayed.
      */
-    ENFORCE_NOTIFICATION_AUTO_DISMISS_TIMEOUT: 10000,
+    ENFORCE_NOTIFICATION_AUTO_DISMISS_TIMEOUT: 5000,
 
     // List of undocumented settings
     /**
