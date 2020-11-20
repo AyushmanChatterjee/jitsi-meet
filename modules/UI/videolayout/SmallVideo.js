@@ -423,7 +423,7 @@ export default class SmallVideo {
         }
 
         // check hovering and change state to avatar with name
-        return input.isHovered ? DISPLAY_AVATAR_WITH_NAME : DISPLAY_AVATAR;
+        return DISPLAY_AVATAR_WITH_NAME;
     }
 
     /**
@@ -506,8 +506,8 @@ export default class SmallVideo {
             break;
         case DISPLAY_AVATAR:
         default:
-            displayModeString = 'avatar';
-            this.$container.addClass('display-avatar-only');
+            displayModeString = 'avatar-with-name';
+            this.$container.addClass('display-avatar-with-name');
             break;
         }
 
