@@ -16,7 +16,7 @@
     flex-direction: column;
     font-size: 1.3em;
     z-index: $toolbarZ + 1;
-    background: linear-gradient(0deg, rgba(7,92,151,1) 0%, rgba(23,134,183,1) 100%);
+    background: linear-gradient(0deg, #234567 0%, rgba(23,134,183,1) 100%);
 
     &-avatar {
         background-color: rgba(105, 232, 194, 0.4);
