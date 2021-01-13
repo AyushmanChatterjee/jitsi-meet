@@ -19,7 +19,7 @@ body.welcome-page {
         background-size: $welcomePageHeaderBackgroundSize;
         padding-bottom: $welcomePageHeaderPaddingBottom;
         background-color: #131519;
-        height: 84vh;
+        height: 85vh;
         overflow: hidden;
         position: relative;
 
@@ -289,7 +289,10 @@ body.welcome-page {
     .welcome-footer {
         background: #131519;
         color: #fff;
-        position: relative;
+        position: fixed;
+        left:0;
+        right:0;
+        bottom:0;
     }
 
     .welcome-footer-centered {
